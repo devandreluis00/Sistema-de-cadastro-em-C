@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
+#include <windows.h>
 
 int main()
 {
@@ -15,6 +16,7 @@ int main()
     int opcao;
 
     do {
+        system("cls");
         // Menu de opcoes
         printf("\n======= Cadastro de Alunos ===========\n");
         printf("1 - Cadastrar\n");
@@ -29,36 +31,45 @@ int main()
         scanf("%d", &opcao);
 
         switch(opcao){
-            case 1:
-
-                // Caso tenha 20 alunos ou mais, ele nao deixa criar mais alunos
-                if(total >= 20){
-
-                    printf("Numero de alunos atingido.\n");
-
-                }else{
+                        case 1: {
+                if (total >= 20) {
+                    printf("Numero maximo de alunos atingido.\n");
+                } else {
+                    int novaMatricula;
+                    int duplicada = 0;
 
                     printf("\n===== CADASTRO =====\n");
-
                     printf("Matricula: ");
-                    scanf("%d", &matricula[total]);
+                    scanf("%d", &novaMatricula);
 
-                    printf("Nome: ");
-                    scanf(" %[^\n]", nome[total]);
+                    for (int i = 0; i < total; i++) {
+                        if (matricula[i] == novaMatricula) {
+                            duplicada = 1;
+                            break;
+                        }
+                    }
 
-                    printf("Idade: ");
-                    scanf("%d", &idade[total]);
-
-                    printf("Curso: ");
-                    scanf(" %[^\n]", curso[total]);
-
-                    // Incrementa a quantidade de alunos
-                    total++;
-
-                    printf("Aluno cadastrado com sucesso!\n");
+                    if (duplicada) {
+                        printf("Erro: Esta matricula ja esta cadastrada!\n");
+                    } else {
+                        matricula[total] = novaMatricula;
+                        
+                        printf("Nome: ");
+                        scanf(" %[^\n]", nome[total]);
+                        
+                        printf("Idade: ");
+                        scanf("%d", &idade[total]);
+                        
+                        printf("Curso: ");
+                        scanf(" %[^\n]", curso[total]);
+                        
+                        total++;
+                        printf("Aluno cadastrado com sucesso!\n");
+                    }
                 }
-
+                system("pause");
                 break;
+            }
             case 2: {
                 
                 // Variáveis para auxiliar na busca
@@ -87,6 +98,7 @@ int main()
                         encontrado = 1;
 
                         // Interrompe o loop, pois já achou o que procurava
+                        system("pause");
                         break;
                     }
                 }
@@ -95,7 +107,7 @@ int main()
                 if(encontrado == 0){
                     printf("Registro nao encontrado.\n");
                 }
-
+                system("pause");
                 break;
             }
             case 3:
@@ -119,7 +131,7 @@ int main()
                         printf("Curso: %s\n", curso[i]);
                     }
                 }
-
+                system("pause");
                 break;
             case 4: {
 
@@ -153,6 +165,7 @@ int main()
                         printf("Aluno alterado com sucesso!\n");
 
                         // Para o loop após a alteração
+                        system("pause");
                         break;
                     }
                 }
@@ -182,6 +195,7 @@ int main()
                     if(matricula[i] == busca){
                         // Salva o índice onde o aluno está e para a busca
                         posicao = i;
+                        system("pause");
                         break;
                     }
                 }
@@ -203,7 +217,7 @@ int main()
                     total--;
                     printf("Aluno excluido com sucesso!\n");
                 }
-
+                system("pause");
                 break;
             }
 
@@ -215,6 +229,7 @@ int main()
             default:
                 // Trata o caso onde o usuário digita um número fora das opções do menu
                 printf("Opcao invalida.\n");
+            system("pause");
         }
     } while(opcao != 0);
 
