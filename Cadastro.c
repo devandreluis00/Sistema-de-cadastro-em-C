@@ -200,7 +200,7 @@ int main()
                     }
                 }
                 
-                // Se a posição continuar -1, o aluno não foi encontrado
+                // Se a posição continuar -1, o aluno não foi encontrado.
                 if(posicao == -1){
                     printf("Registro nao encontrado.\n");
                 }else{
