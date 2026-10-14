@@ -70,3 +70,5 @@ Trabalho desenvolvido em grupo pelos seguintes integrantes:
 **Lógica de Programação**
 
 Projeto acadêmico desenvolvido com a finalidade de praticar os fundamentos da programação em linguagem C.
+
+  - A Inteligência Artificial foi utilizada para fins de apoio ao desenvolvimento e à documentação do projeto.
